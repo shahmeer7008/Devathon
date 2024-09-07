@@ -1,65 +1,67 @@
-const addAnnouncementButton = document.getElementById('submit-announcement');
-const searchButton = document.getElementById('search-button');
-const searchInput = document.getElementById('search-input');
-const announcementList = document.querySelector('.announcement-list');
-const noAnnouncementsMessage = document.getElementById('no-announcements');
+// script.js
 
-// Function to add a new announcement to the list
-function addAnnouncement() {
-    const messageInput = document.getElementById('announcement-message');
-    const message = messageInput.value.trim();
-    
-    if (!message) return; // Exit if no message is provided
+// Database connection setup (replace with your actual credentials)
+const mysql = require('mysql');
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'your_username',
+  password: 'your_password',
+  database: 'your_database_name'
+});
 
-    // Get current date and time
-    const now = new Date();
-    const date = now.toLocaleDateString(); // Format: MM/DD/YYYY
-    const time = now.toLocaleTimeString(); // Format: HH:MM:SS AM/PM
+connection.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+});
 
-    // Create a new announcement item (div)
-    const announcementItem = document.createElement('div');
-    announcementItem.classList.add('announcement-item');
+// Example route for handling login requests
+const express = require('express');
+const app = express();
+app.use(express.json());
 
-    // Create elements for the announcement content (date, time, and message)
-    const dateElement = document.createElement('p');
-    dateElement.textContent = `Date: ${date} ${time}`;
-    const messageElement = document.createElement('p');
-    messageElement.textContent = message;
+app.post('/login', (req, res) => {
+  const { username, password } = req.body;
 
-    // Add the elements to the announcement item
-    announcementItem.appendChild(dateElement);
-    announcementItem.appendChild(messageElement);
+  // Query the database to verify credentials
+  const sql = 'SELECT * FROM users WHERE username = ? AND password = ?';
+  connection.query(sql, [username, password], (err, results) => {
+    if (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Internal server error' });
+    } else {
+      if (results.length > 0) {
+        // Authentication successful
+        res.status(200).json({ message: 'Login successful' });
+      } else {
+        // Invalid credentials
+        res.status(401).json({ error: 'Invalid username or password' });
+      }
+    }
+  });
+});
 
-    // Add the announcement item to the announcement list
-    announcementList.appendChild(announcementItem);
+// Start the server
+const port = 3000;
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
+});
+// side bar
+// Get the sidebar and dropdown elements
+const sidebar = document.querySelector('.sidebar');
+const dropdownBtn = document.querySelector('.dropdown');
+const dropdownContent = document.querySelector('.dropdown-content');
 
-    // Clear the input field
-    messageInput.value = '';
+// Function to toggle the sidebar visibility
+function toggleSidebar() {
+  sidebar.classList.toggle('active');
 }
 
-// Function to search through announcements
-function searchAnnouncements() {
-    const searchTerm = searchInput.value.toLowerCase();
-    const announcementItems = document.querySelectorAll('.announcement-item');
-    let found = false;
+// Add event listener to the dropdown button
+dropdownBtn.addEventListener('click', toggleSidebar);
 
-    announcementItems.forEach(item => {
-        const message = item.querySelector('p:last-of-type').textContent.toLowerCase();
-
-        if (message.includes(searchTerm)) {
-            item.style.display = 'block';
-            found = true;
-        } else {
-            item.style.display = 'none';
-        }
-    });
-
-    // Show or hide the "No announcements found" message
-    noAnnouncementsMessage.style.display = found ? 'none' : 'block';
-}
-
-// Add event listener to the "Add Announcement" button
-addAnnouncementButton.addEventListener('click', addAnnouncement);
-
-// Add event listener to the search button
-searchButton.addEventListener('click', searchAnnouncements);
+// Add event listener to close the sidebar when clicking outside of it
+document.addEventListener('click', function(event) {
+  if (!sidebar.contains(event.target) && !dropdownBtn.contains(event.target)) {
+    sidebar.classList.remove('active');
+  }
+});

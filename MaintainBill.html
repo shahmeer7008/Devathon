@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance Bill</title>
+    <link rel="stylesheet" href="bill.css">
+</head>
+<body>
+    <div id="sidebar-toggle" class="sidebar-toggle">&#9776;</div>
+    <div class="container">
+        <div class="sidebar">
+            <div id="sidebar-close" class="sidebar-close">&times;</div>
+            <div class="logo">
+                <img src="logo.png" alt="HMS Logo">
+                <h1>HMS</h1>
+            </div>
+            <ul>
+                <li><a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-bell"></i> Announcement</a></li>
+                <li id="maintenance-bill-link"><a href="#"><i class="fas fa-money-bill-wave"></i> Maintainance Bill</a></li>
+                <li><a href="#"><i class="fas fa-home"></i> Home Services</a></li>
+                <li><a href="#"><i class="fas fa-map-marker-alt"></i> Neighbourhood</a></li>
+                <li><a href="#"><i class="fas fa-users"></i> Members</a></li>
+                <li><a href="#"><i class="fas fa-user-tie"></i> Staff</a></li>
+                <li><a href="#"><i class="fas fa-comment-dots"></i> Chat Box</a></li>
+                <li><a href="#"><i class="fas fa-calendar-alt"></i> Events</a></li>
+                <li><a href="#"><i class="fas fa-sign-out-alt"></i> Log out</a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <div class="header">
+                <div class="title">
+                    <h1>Billing List</h1>
+                </div>
+                <button class="add-new-btn">
+                    <i class="fas fa-plus"></i> New
+                </button>
+            </div>
+            <div class="filter-section">
+                <label for="month">Month:</label>
+                <input type="month" id="month" value="2022-05">
+                <button id="filter-btn">Filter</button>
+            </div>
+            <div class="tab-container">
+                <button class="tab-button" id="customer-tab">Customer</button>
+                <button class="tab-button" id="admin-tab">Admin</button>
+            </div>
+            <div id="customer-content" class="tab-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Customer ID</th>
+                            <th>Bill ID</th>
+                            <th>Due Date</th>
+                            <th>Amount</th>
+                            <th>Bill Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Rows will be dynamically added here -->
+                    </tbody>
+                </table>
+            </div>
+            <div id="admin-content" class="tab-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Customer ID</th>
+                            <th>Bill ID</th>
+                            <th>Due Date</th>
+                            <th>Amount</th>
+                            <th>Bill Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Rows will be dynamically added here -->
+                    </tbody>
+                </table>
+                <button class="add-new-record-btn">
+                    <i class="fas fa-plus"></i> Add Record
+                </button>
+            </div>
+            <div class="pagination">
+                <button class="previous-btn">Previous</button>
+                <span class="page-number">1</span>
+                <button class="next-btn">Next</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="bill.js"></script>
+</body>
+</html>

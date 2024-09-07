@@ -1,136 +1,182 @@
-body {
-    font-family: Arial, sans-serif;
+* {
     margin: 0;
-    display: flex;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.sidebar {
-    width: 250px;
-    background-color: #f5f5f5;
-    padding: 20px;
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    background-size: cover;
+    background-position: center;
     color: #333;
 }
 
-.sidebar .logo {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between; /* Distribute space between dropdown and navigation */
+    align-items: center;
 }
 
-.sidebar ul {
+header {
+    background-color: #fff;
+    padding: 20px 0;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff;
+    text-decoration: none;
+}
+
+/* Navigation Styles */
+nav ul {
     list-style: none;
+    display: flex;
+    margin: 0;
     padding: 0;
 }
 
-.sidebar li {
-    margin-bottom: 10px;
+nav li {
+    margin-left: 20px;
 }
 
-.sidebar li a {
-    display: block;
-    padding: 10px;
+nav a {
     text-decoration: none;
     color: #333;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+    transition: color 0.3s ease;
 }
 
-.sidebar li a:hover {
-    background-color: #ddd;
+nav a:hover {
+    color: #007bff;
 }
 
-.sidebar li a i {
-    margin-right: 10px;
-}
-
-.main-content {
-    flex: 1;
-    padding: 20px;
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.header h1 {
-    margin: 0;
-}
-
-.search-bar {
+/* Dropdown Menu Styles */
+.dropdown {
     position: relative;
-    display: flex;
-    align-items: center;
-    width: 250px;
+    display: inline-block;
 }
 
-.search-bar button {
-    padding: 8px 16px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #4CAF50;
+.dropbtn {
+    background-color: #007bff;
     color: white;
+    padding: 10px;
+    border: none;
     cursor: pointer;
-    margin-right: 10px;
-}
-
-.search-bar button:hover {
-    background-color: #45a049;
-}
-
-.search-bar input {
-    flex: 1;
-    padding: 8px;
-    border: 1px solid #ddd;
+    font-size: 16px;
     border-radius: 5px;
 }
 
-.user-info {
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    top: 100%;
+    left: 0; /* Align the dropdown to the extreme left */
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Menu Icon (For Responsive View) */
+.menu-icon {
+    display: none;
+    cursor: pointer;
+}
+
+.menu-icon span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px;
+    background-color: #333;
+}
+
+/* Hero Section */
+.hero {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    padding: 100px 0;
 }
 
-.user-info span {
-    margin-right: 10px;
-}
-
-.announcement-container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.announcement-form {
+.hero-text h1 {
+    font-size: 48px;
+    font-weight: bold;
+    color: #007bff;
     margin-bottom: 20px;
 }
 
-.announcement-form input {
-    width: 80%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+.hero-text p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 30px;
 }
 
-.announcement-form button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-left: 10px;
+.hero-image {
+    text-align: right;
+    width: 50%;
 }
 
-.announcement-form button:hover {
-    background-color: #45a049;
+.hero-image img {
+    max-width: 100%;
+    height: auto;
 }
 
-.announcement-item {
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    padding: 10px;
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;  /* Center the text */
+    width: 100%;         /* Ensure the footer takes full width */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul {
+        display: none;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-text h1 {
+        font-size: 32px;
+    }
+
+    .hero-image {
+        width: 100%;
+        margin-top: 20px;
+    }
 }
