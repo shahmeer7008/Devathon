@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HMS Announcement Board</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">HMS</div>
+        <ul>
+            <li><a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li><a href="#"><i class="fas fa-bullhorn"></i> Announcement</a></li>
+            <li><a href="#"><i class="fas fa-file-invoice-dollar"></i> Maintenance Bill</a></li>
+            <li><a href="#"><i class="fas fa-concierge-bell"></i> Home Service</a></li>
+            <li><a href="#"><i class="fas fa-map-marker-alt"></i> Neighborhood</a></li>
+            <li><a href="#"><i class="fas fa-users"></i> View all Users</a></li>
+            <li><a href="#"><i class="fas fa-comment-dots"></i> Chat Box</a></li>
+            <li><a href="#"><i class="fas fa-calendar-alt"></i> Events</a></li>
+            <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+            <li><a href="#"><i class="fas fa-sign-out-alt"></i> Log out</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1>Announcement</h1>
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Search...">
+                <button id="search-button">Search</button>
+            </div>
+            <div class="user-info">
+                <span>Soham Dubewar</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+
+        <div class="announcement-container">
+            <div class="announcement-form">
+                <input type="text" id="announcement-message" placeholder="Enter your message">
+                <button id="submit-announcement">Add announcement</button>
+            </div>
+            <div class="announcement-list">
+                <!-- Announcement items will be added here -->
+            </div>
+            <p id="no-announcements" style="display: none;">No announcements found</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit-id.js" crossorigin="anonymous"></script>
+</body>
+</html>
